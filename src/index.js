@@ -2,7 +2,6 @@ const dotenv = require("dotenv")
 dotenv.config({path:`${__dirname}/../config.env`});
 
 const express = require('express');
-const client = require('./mongodb')
 const bodyParser = require('body-parser')
 const corse = require('cors');
 const path = require('path');
@@ -10,10 +9,13 @@ const path = require('path');
 const app = express();
 port = process.env.PORT || 3010;
 
+const client = require('./mongodb')
+const db = client.db("portfolio");
+
 //------ for mongoAtlas (cloud) ------
-const mongoose = require("mongoose")
-require("./mongodb")
-const db = mongoose.connection
+// const mongoose = require("mongoose")
+// require("./mongodb")
+// const db = mongoose.connection
 
 app.use(bodyParser.json())
 
